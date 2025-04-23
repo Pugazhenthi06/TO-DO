@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <link rel="stylesheet" href="style.css">
+
+<body>
+    <center>
+    <nav>
+    
+        <h1 style="padding: 10px;">Student Form</h1>
+    </nav>
+    <hr>
+        <form id="studentForm">
+            <table border="1" class="form-table">
+                <tr>
+                    <td>
+                        <h1>Name</h1>
+                    </td>
+                    <td><input type="text" id="name"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <h1>Age</h1>
+                    </td>
+                    <td><input type="number" id="age"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <h1>Gender</h1>
+                    </td>
+                    <td><input type="radio" name="Gender" value="Male">Male<input type="radio" name="Gender" value="Female">Female</td>
+                </tr>
+                <tr>
+                    <td>
+                        <h1>Course</h1>
+                    </td>
+                    <td><select name="Course" id="course">
+                            <option value="Front End">Front End</option>
+                            <option value="Back End">Back End</option>
+                            <option value="Data Base">DataBase</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>
+                        <h1>E-mail</h1>
+                    </td>
+                    <td><input type="email" id="email" placeholder="example123@gmail.com"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="button" value="Save"  style="width: 100%" onclick="add_details()"></td>
+                    
+                </tr>
+            </table>
+        </form>
+        <hr></hr>
+        
+            <table border="1" class="table2" id="table2">
+                <tr> 
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Course</th>
+                    <th>Gender</th>
+                    <th>E-mail</th>
+                    <th>Action</th>
+                </tr>
+                
+            </table>
+        
+        <script>
+            function add_details() {
+                // Get values from form
+                let name = document.getElementById("name").value;
+                let age = document.getElementById("age").value;
+                let course = document.getElementById("course").value;
+                let email = document.getElementById("email").value;
+        
+                // Get selected gender
+                let genderElems = document.getElementsByName("Gender");
+                let gender = "";
+                for (let g of genderElems) {
+                    if (g.checked) {
+                        gender = g.value;
+                        break;
+                    }
+                }
+        
+                // Validate
+                if (!name || !age || !gender || !email) {
+                    alert("Please fill all fields!");
+                    return;
+                }
+        
+                // Get the table
+                let table = document.getElementById("table2");
+        
+                // Insert a new row
+                let newRow = table.insertRow(-1); // Add at end
+        
+                newRow.innerHTML = `
+                    <td>${name}</td>
+                    <td>${age}</td>
+                    <td>${course}</td>
+                    <td>${gender}</td>
+                    <td>${email}</td>
+                    <td class='deletebtn'><button onclick="deleteRow(this)">Delete</button></td>
+                `;
+        
+                // Clear form after adding
+                document.getElementById("studentForm").reset();
+            }
+        
+            function deleteRow(btn) {
+                // Get row of the clicked button
+                let row = btn.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        </script>
+        
+
+    </center>
+
+</body>
+
+</html>

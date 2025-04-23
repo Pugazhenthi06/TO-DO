@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <h1>To-Do</h1>
+    </div>
+
+    <h3>ToDo tasks</h3>
+    <div class="container" id="task-list"></div> <!-- ✅ real task container -->
+
+    <!-- Popup -->
+    <div class="popup-overlay">
+        <div class="popup-box">
+            <h2>Add Task</h2>
+            <form id="details" onsubmit="return false;">
+                <input type="text" id="task-input" placeholder="Enter Task and press Enter" autofocus>
+                <ul id="task-preview-list"></ul> <!-- ✅ preview task list -->
+                <button id="add" type="button">Add Task</button>
+                <button id="cancel" type="button">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <button class="add-button" id="add-popup">+</button>
+    <script src="script.js"></script>
+</body>
+</html>
