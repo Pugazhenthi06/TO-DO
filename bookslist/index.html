@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books_list</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="navbar">
+        <h1>Curiosity Corner</h1>
+
+    </div>
+    <div class="container">
+        <div class="book-container">
+            <h2>Atomic Habits</h2>
+            <h5>Atom</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo deleniti molestias dolorem saepe assumenda minima ipsum non molestiae corporis itaque perspiciatis, laboriosam quo sunt ut sequi maiores repellendus error ad.</p>
+            <button class="btn" onclick="deletebook(event)">Delete</button>
+        </div>
+        <div class="popup-overlay">
+            <div class="popup-box">
+                <h2>Add book</h2>
+                <form id="details">
+                    <input type="text" id="book-in" placeholder="Book Title" >
+                    <input type="text" id="book-ar" placeholder="Author"  >
+                    <textarea id="book-des" placeholder="Description" ></textarea>
+                    <button id="add" type="submit">Add Book</button>
+                    <button id="cancel" type="submit">Cancel</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="add-button" id="add-popup">+</button>
+    <script src="script.js">
+        const addPopup = document.getElementById('add-popup');
+        const bookContainer = document.querySelector('.book-container');
+        const bookForm = document.createElement('form');
+        bookForm.innerHTML = `
+            <input type="text" name="title" placeholder="Book Title" required>
+            <input type="text" name="author" placeholder="Author" required>
+            <textarea name="description" placeholder="Description" required></textarea>
+            <button type="submit">Add Book</button>
+        `;
+        addPopup.addEventListener('click', () => {
+            bookContainer.appendChild(bookForm);
+        });
+        
+    </script>
+</body>
+</html>
